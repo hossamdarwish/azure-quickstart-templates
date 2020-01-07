@@ -1,5 +1,5 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/subscriptionDeploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
     "contentVersion": "1.0.0.1",
     "parameters": {
       "appName": {
@@ -7,15 +7,11 @@
         },
         "location": {
             "type": "string"
-        },
-        "storagePrefix": {
-            "type": "string",
-            "maxLength": 11
         }
     },
     "variables": {
         "rgName": "[concat(parameters('appName'),'-rg')]",
-        "storageName": "[concat(parameters('storagePrefix'), uniqueString(subscription().id, variables('rgName')))]"
+        "storageName": "[concat(replace(parameters('appName'),'-', ''), 'storage')]"
     },
     "resources": [
         {
@@ -36,7 +32,7 @@
             "properties": {
                 "mode": "Incremental",
                 "template": {
-                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
                     "contentVersion": "1.0.0.0",
                     "parameters": {},
                     "variables": {},

@@ -1,0 +1,8 @@
+az login
+
+az account list-locations
+
+#
+# hint the backtick (`) https://github.com/Azure/azure-cli/issues/5899#issuecomment-425998938
+az deployment create --name zonxenyan1Deployment --location westeurope --template-file azuredeploy.json --parameters `@azuredeploy.parameters.json
+
